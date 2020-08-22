@@ -39,7 +39,7 @@ passTuple1(a)
 def passTuple2(num1, num2):
   print(num1 * num2)
 
-a = (2, 4, 8)
+a = (2, 4)
 
 passTuple2(*a)
 # returns 8
@@ -76,5 +76,5 @@ a = 42
 
 passFunction(funcToPass2(a))
 # returns 42, and would still return 42 if the variable a was in a different scope
-than passFunction, and EVEN if there was a different variable called a in the same
-scope as passFunction.
+# than passFunction, and EVEN if there was a different variable called a in the same
+# scope as passFunction.
