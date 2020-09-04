@@ -54,8 +54,7 @@ def main():
     while "START blog" not in line:
         line = f.readline()
         template_top += line
-    while "END blog" not in line:
-        line = f.readline()
+    template_top += "\n"
     template_bottom = f.read()
     f.close()
     # generate a complete blog page
