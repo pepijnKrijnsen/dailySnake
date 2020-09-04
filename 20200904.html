@@ -1,0 +1,76 @@
+<!--
+MORE STATIC WEBSITE GENERATION
+ 
+As far as I have been able to find out, it's not possible to use the sftp command without requiring 
+at least a little bit of interaction. There's no scp-like syntax that allows me to identify the 
+source (files/dirs), destination (dir), authentication, and execution all in a single line. So 
+instead I'm relying on PySFTP to do the hard work.
+
+I'm hard-coding the username and password for now (although not telling any of you - I hope you'll 
+forgive me). I may come back to this script and make it more general purpose at some point but for 
+now I need to just get this working by Sunday night.
+Here are the files and required actions:
+1. The complete HTML of a new blog post must be uploaded to mydomain.com/blog/YYYYmmdd_title.html
+2. The current mydomain.com/blog.html must be updated to include the latest post
+3. ...that mydomain.com/blog.html page does not exist yet! Let's get on that first:
+
+Each page of my portfolio site has a wide left column for content and a narrower right column for 
+links to my resume, my bio, my blog, and my online presence. The content side of the blog.html page 
+will have rectangular blocks with the title of that post plus the first few lines/words/letters 
+(depending on how large the viewport is) of the post itself.
+-->
+
+<div class="column">
+<!--START content
+	^ this comment lets the Python script know where to insert content-->
+
+<a href="blog/one.html">
+	<div class="postcontainer">
+		<h3>Blog title</h3>
+		<p class="blog_preview">First paragraph of a new blog can go here - it only displays one 
+		line up to the end of the postcontainer div.</p>
+	</div>
+</a>
+
+<a href="blog/two.html">
+	<div class="postcontainer">
+		<h3>Blog title 2</h3>
+		<p class="blog_preview">Again, this p will contain the first paragraph (minus header) of 
+		the blog, but much less will be visible on a typical screen.</p>
+	</div>
+</a>
+
+<!--END content
+	same story as above - just a signal to the Python script that generates pages-->
+</div>
+
+<!--CSS specific to the blog.html page looks like this:-->
+<style>
+.column a {
+	text-decoration: none;
+}
+
+h3 {
+	margin: 18px 0 6px 0;
+	color: white;
+	font-family: monospace;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.postcontainer {
+	width: 94%;
+	height: 100px;
+	margin-bottom: 8%;
+	padding: 0 6px;
+	border: 3px solid #dda;
+}
+
+.blog_preview {
+	font-size: 11pt;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+<!-- the overflow and white-space settings are required to make text-overflow work correctly-->
+</style>
