@@ -40,30 +40,4 @@
 # Let's see what this looks like in practice.
 # 
 # With the static pages - whether generated or hand-crafted - in place, let's 
-# configure Bottle to serve them correctly.
-import os.path
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-
-@route("/")
-def serve_home():
-    static_file("index", root = parent_dir)
-
-@route("/<filename:re:.*\.html")    # e.g. domain.com/blog.html finds blog.html
-def serve_page(filename):
-    static_file(filename, root = parent_dir)
-
-@route("/blog/<filename:re:.*\.html")   # /blog/f1rstp0st finds f1rstp0st.html
-def serve_blog(filename):
-    static_file(filename, root = parent_dir)
-
-@route("/<filename:re:.*\.css")
-def css_files(filename):
-    loc = parent_dir + "css/"
-    static_file(filename, root = loc)
-# 
-# This should allow the following static files to be served:
-# - The index.html file when visitor goes to domain.com
-# - Any file ending in .html in the root (domain.com/me.html)
-# - Any file ending in .html in root/blog (domain.com/blog/one.html)
-# - Any css file HREF-d by any HTML file, provided that css file is saved at
-#       root/css/ (e.g. domain.com/css/layout.css)
+# configure Bottle to serve them correctly in the next post.
